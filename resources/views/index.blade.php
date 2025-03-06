@@ -23,7 +23,7 @@
                 </ul>
             </div>
             <div class="project-image">
-                <img src="{{ asset('images/aerial-map.jpg') }}" alt="Aerial view of Breukelen Houses development" class="map-image">
+                <img src="{{ secure_asset('images/aerial-map.jpg') }}" alt="Aerial view of Breukelen Houses development" class="map-image">
                 <p class="image-caption">Aerial view of the development area</p>
             </div>
         </div>
@@ -33,11 +33,11 @@
         <h2>Existing Conditions</h2>
         <div class="conditions-gallery">
             <div class="gallery-item">
-                <img src="{{ asset('images/condition-1.jpg') }}" alt="Current drainage patterns">
+                <img src="{{ secure_asset('images/condition-1.jpg') }}" alt="Current drainage patterns">
                 <p>Current drainage patterns showing flooding risk areas</p>
             </div>
             <div class="gallery-item">
-                <img src="{{ asset('images/condition-2.jpg') }}" alt="Existing infrastructure">
+                <img src="{{ secure_asset('images/condition-2.jpg') }}" alt="Existing infrastructure">
                 <p>Existing stormwater infrastructure assessment</p>
             </div>
         </div>
@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="management-diagram">
-            <img src="{{ asset('images/diagram.png') }}" alt="Cloudburst management diagram" class="full-width-image">
+            <img src="{{ secure_asset('images/diagram.png') }}" alt="Cloudburst management diagram" class="full-width-image">
         </div>
     </section>
 
@@ -92,7 +92,7 @@
                 <button class="secondary-btn">Share your thoughts</button>
             </div>
             <div class="feedback-image">
-                <img src="{{ asset('images/community.jpg') }}" alt="Community members discussing the project">
+                <img src="{{ secure_asset('images/community.jpg') }}" alt="Community members discussing the project">
             </div>
         </div>
     </section>
