@@ -3,7 +3,7 @@
 @section('content')
 <!-- Hero Section with Image -->
 <div class="hero-banner">
-    <div class="hero-image" style="background-image: url('{{ secure_asset('images/hero-bg-building.jpg') }}');"></div>
+    <div class="hero-image" style="background-image: url('{{ asset('images/hero-bg-building.jpg') }}');"></div>
     
     <!-- Red Content Section -->
     <div class="hero-content-container">
@@ -15,8 +15,8 @@
                 <div class="hero-right">
                     <p>Leveraging nature-based solutions, hydrologic and hydraulic modeling, and community-oriented stormwater management strategies.</p>
                     <div class="hero-buttons">
-                        <a href="{{ secure_asset('/community-meeting') }}" class="hero-btn">Join the Next Community Meeting</a>
-                        <a href="{{ secure_asset('/survey') }}" class="hero-btn hero-btn-light">Take the Community Survey</a>
+                        <a href="{{ asset('/community-meeting') }}" class="hero-btn">Join the Next Community Meeting</a>
+                        <a href="{{ asset('/survey') }}" class="hero-btn hero-btn-light">Take the Community Survey</a>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
         <div class="about-project-row">
             <div class="about-project-left">
                 <h2>About the project</h2>
-                <a href="{{ secure_asset('/about') }}" class="learn-more-btn">Learn more <span class="arrow">></span></a>
+                <a href="{{ asset('/about') }}" class="learn-more-btn">Learn more <span class="arrow">></span></a>
             </div>
             <div class="about-project-right">
                 <p>The project focuses on developing comprehensive Cloudburst Management at Breukelen Houses through nature-based solutions, hydrographic and topographic modeling, and community-driven stormwater management strategies. Aligned with New York City's broader infrastructure and climate resilience goals, the initiative emphasizes sustainability and resilience to support communities affected by extreme weather events. This project builds on studies initiated during the 2021 Building Resilient Infrastructure and Communities (BRIC) grant cycle, by refining previous research while integrating regional development practices and social considerations. With $19.8 million awarded through BRIC and an additional $14 million in city funding, the project aims to identify and implement targeted solutions that address the unique flood-related challenges at Breukelen Houses.</p>
@@ -59,15 +59,15 @@
                 <div class="gallery-slide">
                     <div class="gallery-slide-items">
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 1" class="gallery-image">
+                            <img src="{{ asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 1" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-2.jpg') }}" alt="Existing Condition 2" class="gallery-image">
+                            <img src="{{ asset('images/gallery/g-2.jpg') }}" alt="Existing Condition 2" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-3.jpg') }}" alt="Existing Condition 3" class="gallery-image">
+                            <img src="{{ asset('images/gallery/g-3.jpg') }}" alt="Existing Condition 3" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                     </div>
@@ -75,15 +75,15 @@
                 <div class="gallery-slide">
                     <div class="gallery-slide-items">
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 4" class="gallery-image">
+                            <img src="{{ asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 4" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 5" class="gallery-image">
+                            <img src="{{ asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 5" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 6" class="gallery-image">
+                            <img src="{{ asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 6" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
             <div class="cloudburst-cards">
                 <div class="cloudburst-card absorb">
                     <div class="card-icon">
-                        <img src="{{ secure_asset('images/icons/1.png') }}" alt="Absorb">
+                        <img src="{{ asset('images/icons/1.png') }}" alt="Absorb">
                     </div>
                     <h3>Capture and infiltrate first 1.25" of runoff</h3>
                     <p>Our first defense focuses on detaining water in permeable surfaces, rain gardens, and bioswales that naturally absorb water.</p>
@@ -129,7 +129,7 @@
                 
                 <div class="cloudburst-card store">
                     <div class="card-icon">
-                        <img src="{{ secure_asset('images/icons/2.png') }}" alt="Store">
+                        <img src="{{ asset('images/icons/2.png') }}" alt="Store">
                     </div>
                     <h3>Employ subsurface options once surface storage is fully saturated</h3>
                     <p>When surface systems reach capacity, we engage subsurface storage solutions including underground detention tanks and reservoirs.</p>
@@ -137,7 +137,7 @@
                 
                 <div class="cloudburst-card transfer">
                     <div class="card-icon">
-                        <img src="{{ secure_asset('images/icons/3.png') }}" alt="Transfer">
+                        <img src="{{ asset('images/icons/3.png') }}" alt="Transfer">
                     </div>
                     <h3>Storage is full and volumes must be directed offsite</h3>
                     <p>During extreme events when storage capacity is exhausted, we implement controlled water pathways that direct excess water away from critical infrastructure and residential areas.</p>
@@ -145,7 +145,7 @@
                 
                 <div class="cloudburst-card convey">
                     <div class="card-icon">
-                        <img src="{{ secure_asset('images/icons/4.png') }}" alt="Convey">
+                        <img src="{{ asset('images/icons/4.png') }}" alt="Convey">
                     </div>
                     <h3>Leverage secondary floodable spaces and strategic infrastructural improvements</h3>
                     <p>Our final tier utilizes designated secondary spaces that can temporarily handle excess water.</p>
@@ -154,7 +154,7 @@
         </div>
         
         <div class="cloudburst-diagram">
-            <img src="{{ secure_asset('images/diagram.png') }}" alt="Cloudburst Management Diagram">
+            <img src="{{ asset('images/diagram.png') }}" alt="Cloudburst Management Diagram">
         </div>
     </div>
 </section>

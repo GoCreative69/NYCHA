@@ -4,7 +4,7 @@
         <div class="footer-main">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <img src="{{ secure_asset('images/logo.png') }}" alt="NYCHA Logo">
+                    <img src="{{ asset('images/logo.png') }}" alt="NYCHA Logo">
                 </div>
                 <div class="footer-nav">
                     <a href="#">Home</a>
