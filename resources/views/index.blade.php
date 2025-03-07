@@ -37,7 +37,14 @@
             </div>
         </div>
         <div class="about-project-map">
-            <img src="{{ secure_asset('images/about-img.png') }}" alt="Breukelen Houses Flood Map" class="flood-map-image">
+            <div class="video-overlay">
+                <button class="play-button" data-video-id="MquNP8RQUpY">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.5)"/>
+                        <path d="M9.5 7.5v9l7-4.5-7-4.5z" fill="white"/>
+                    </svg>
+                </button>
+            </div>
         </div>
     </section>
 </div>
@@ -52,15 +59,15 @@
                 <div class="gallery-slide">
                     <div class="gallery-slide-items">
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 1">
+                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 1" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-2.jpg') }}" alt="Existing Condition 2">
+                            <img src="{{ secure_asset('images/gallery/g-2.jpg') }}" alt="Existing Condition 2" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-3.jpg') }}" alt="Existing Condition 3">
+                            <img src="{{ secure_asset('images/gallery/g-3.jpg') }}" alt="Existing Condition 3" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                     </div>
@@ -68,15 +75,15 @@
                 <div class="gallery-slide">
                     <div class="gallery-slide-items">
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 4">
+                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 4" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 5">
+                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 5" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                         <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 6">
+                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 6" class="gallery-image">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         </div>
                     </div>
@@ -114,7 +121,7 @@
             <div class="cloudburst-cards">
                 <div class="cloudburst-card absorb">
                     <div class="card-icon">
-                        <span class="icon-absorb"></span>
+                        <img src="{{ secure_asset('images/icons/1.png') }}" alt="Absorb">
                     </div>
                     <h3>Capture and infiltrate first 1.25" of runoff</h3>
                     <p>Our first defense focuses on detaining water in permeable surfaces, rain gardens, and bioswales that naturally absorb water.</p>
@@ -122,7 +129,7 @@
                 
                 <div class="cloudburst-card store">
                     <div class="card-icon">
-                        <span class="icon-store"></span>
+                        <img src="{{ secure_asset('images/icons/2.png') }}" alt="Store">
                     </div>
                     <h3>Employ subsurface options once surface storage is fully saturated</h3>
                     <p>When surface systems reach capacity, we engage subsurface storage solutions including underground detention tanks and reservoirs.</p>
@@ -130,7 +137,7 @@
                 
                 <div class="cloudburst-card transfer">
                     <div class="card-icon">
-                        <span class="icon-transfer"></span>
+                        <img src="{{ secure_asset('images/icons/3.png') }}" alt="Transfer">
                     </div>
                     <h3>Storage is full and volumes must be directed offsite</h3>
                     <p>During extreme events when storage capacity is exhausted, we implement controlled water pathways that direct excess water away from critical infrastructure and residential areas.</p>
@@ -138,7 +145,7 @@
                 
                 <div class="cloudburst-card convey">
                     <div class="card-icon">
-                        <span class="icon-convey"></span>
+                        <img src="{{ secure_asset('images/icons/4.png') }}" alt="Convey">
                     </div>
                     <h3>Leverage secondary floodable spaces and strategic infrastructural improvements</h3>
                     <p>Our final tier utilizes designated secondary spaces that can temporarily handle excess water.</p>
@@ -163,6 +170,27 @@
     </div>
 </section>
 
+<!-- Video Modal -->
+<div class="video-modal" id="videoModal">
+    <span class="close-video">&times;</span>
+    <div class="video-container">
+        <iframe id="youtubeIframe" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!-- Lightbox Gallery Modal -->
+<div class="lightbox" id="imageLightbox">
+    <div class="lightbox-content">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightboxImage" src="" alt="Enlarged Image">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+        <div class="lightbox-nav">
+            <button id="prevImage">&lsaquo;</button>
+            <button id="nextImage">&rsaquo;</button>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('scripts')
@@ -178,6 +206,111 @@
                 mobileMenuToggle.classList.toggle('active');
             });
         }
+        
+        // YouTube Video Modal
+        const videoModal = document.getElementById('videoModal');
+        const youtubeIframe = document.getElementById('youtubeIframe');
+        const playButton = document.querySelector('.play-button');
+        const closeVideo = document.querySelector('.close-video');
+        
+        // Open video modal when play button is clicked
+        playButton.addEventListener('click', function() {
+            const videoId = this.getAttribute('data-video-id');
+            youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            videoModal.classList.add('active');
+        });
+        
+        // Close video modal
+        closeVideo.addEventListener('click', function() {
+            videoModal.classList.remove('active');
+            youtubeIframe.src = '';
+        });
+        
+        // Close modal when clicking outside the video container
+        videoModal.addEventListener('click', function(e) {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                youtubeIframe.src = '';
+            }
+        });
+        
+        // Lightbox Gallery
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        const lightbox = document.getElementById('imageLightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const closeLightbox = document.querySelector('.close-lightbox');
+        const prevButton = document.getElementById('prevImage');
+        const nextButton = document.getElementById('nextImage');
+        
+        let currentImageIndex = 0;
+        const imageList = [];
+        
+        // Populate the image list
+        galleryImages.forEach((image, index) => {
+            imageList.push({
+                src: image.src,
+                alt: image.alt,
+                caption: image.closest('.gallery-item').querySelector('p').textContent
+            });
+            
+            // Add click event to open lightbox
+            image.addEventListener('click', function() {
+                openLightbox(index);
+            });
+        });
+        
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxContent();
+            lightbox.classList.add('active');
+        }
+        
+        function updateLightboxContent() {
+            const currentImage = imageList[currentImageIndex];
+            lightboxImage.src = currentImage.src;
+            lightboxImage.alt = currentImage.alt;
+            lightboxCaption.textContent = currentImage.caption;
+        }
+        
+        // Previous image
+        prevButton.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex - 1 + imageList.length) % imageList.length;
+            updateLightboxContent();
+        });
+        
+        // Next image
+        nextButton.addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex + 1) % imageList.length;
+            updateLightboxContent();
+        });
+        
+        // Close lightbox
+        closeLightbox.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+        });
+        
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'ArrowLeft') {
+                currentImageIndex = (currentImageIndex - 1 + imageList.length) % imageList.length;
+                updateLightboxContent();
+            } else if (e.key === 'ArrowRight') {
+                currentImageIndex = (currentImageIndex + 1) % imageList.length;
+                updateLightboxContent();
+            } else if (e.key === 'Escape') {
+                lightbox.classList.remove('active');
+            }
+        });
     });
 </script>
 @endsection
