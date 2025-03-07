@@ -1,43 +1,39 @@
 <!-- Footer -->
-<footer class="nycha-footer">
+<footer class="site-footer">
     <div class="container">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="{{ asset('images/nycha-logo.svg') }}" alt="NYCHA Logo" class="logo">
+        <div class="footer-main">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="{{ secure_asset('images/logo.png') }}" alt="NYCHA Logo">
+                </div>
+                <div class="footer-nav">
+                    <a href="#">Home</a>
+                    <a href="#">Community</a>
+                    <a href="#">Gallery</a>
+                    <a href="#">Resources</a>
+                </div>
             </div>
-            <div class="footer-links">
-                <div class="footer-section">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="#">About NYCHA</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
+            
+            <div class="footer-subscribe">
+                <div class="subscribe-label">Subscribe</div>
+                <div class="subscribe-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
                 </div>
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Residents</a></li>
-                        <li><a href="#">Applications</a></li>
-                        <li><a href="#">FAQs</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Locations</a></li>
-                        <li><a href="#">Emergency</a></li>
-                    </ul>
-                </div>
+                <div class="subscribe-policy">By subscribing you agree to with our <a href="#">Privacy Policy</a></div>
             </div>
         </div>
+        
+        <div class="footer-divider"></div>
+        
         <div class="footer-bottom">
-            <p>&copy; {{ date('Y') }} New York City Housing Authority. All rights reserved.</p>
-            <div class="footer-bottom-links">
+            <div class="footer-links">
                 <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Use</a>
-                <a href="#">Accessibility</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookies Settings</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 NYCHA. All rights reserved.
             </div>
         </div>
     </div>
