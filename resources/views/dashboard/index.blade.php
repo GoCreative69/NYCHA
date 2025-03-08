@@ -9,7 +9,7 @@
             <div class="metric-icon">
                 <i class="fas fa-calendar-alt"></i>
             </div>
-            <h3 class="metric-title">Total Events</h3>
+            <h3 class="metric-title">Total Events ggg</h3>
             <p class="metric-value">24</p>
             <div class="metric-change">
                 <i class="fas fa-arrow-up"></i> 12% from last month
