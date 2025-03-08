@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/community', function () {
+    return view('pages.community');
+});
+
+Route::get('/gallery', function () {
+    return view('pages.gallery');
+});
+
+Route::get('/resources', function () {
+    return view('pages.resources');
+});
+
+

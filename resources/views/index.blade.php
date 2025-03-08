@@ -1,28 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Hero Section with Image -->
-<div class="hero-banner">
-    <div class="hero-image" style="background-image: url('{{ secure_asset('images/hero-bg-building.jpg') }}');"></div>
-    
-    <!-- Red Content Section -->
-    <div class="hero-content-container">
-        <div class="container">
-            <div class="hero-content-row">
-                <div class="hero-title">
-                    <h1>Cloudburst Management at Breukelen Houses</h1>
-                </div>
-                <div class="hero-right">
-                    <p>Leveraging nature-based solutions, hydrologic and hydraulic modeling, and community-oriented stormwater management strategies.</p>
-                    <div class="hero-buttons">
-                        <a href="{{ secure_asset('/community-meeting') }}" class="hero-btn">Join the Next Community Meeting</a>
-                        <a href="{{ secure_asset('/survey') }}" class="hero-btn hero-btn-light">Take the Community Survey</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="container">
     <!-- About Project Section -->
@@ -30,7 +8,7 @@
         <div class="about-project-row">
             <div class="about-project-left">
                 <h2>About the project</h2>
-                <a href="{{ secure_asset('/about') }}" class="learn-more-btn">Learn more <span class="arrow">></span></a>
+                <a href="{{ asset('/about') }}" class="learn-more-btn">Learn more <span class="arrow">></span></a>
             </div>
             <div class="about-project-right">
                 <p>The project focuses on developing comprehensive Cloudburst Management at Breukelen Houses through nature-based solutions, hydrographic and topographic modeling, and community-driven stormwater management strategies. Aligned with New York City's broader infrastructure and climate resilience goals, the initiative emphasizes sustainability and resilience to support communities affected by extreme weather events. This project builds on studies initiated during the 2021 Building Resilient Infrastructure and Communities (BRIC) grant cycle, by refining previous research while integrating regional development practices and social considerations. With $19.8 million awarded through BRIC and an additional $14 million in city funding, the project aims to identify and implement targeted solutions that address the unique flood-related challenges at Breukelen Houses.</p>
@@ -56,50 +34,96 @@
         
         <div class="gallery-slider-container">
             <div class="gallery-slider">
-                <div class="gallery-slide">
-                    <div class="gallery-slide-items">
-                        <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 1" class="gallery-image">
-                            <p>Flooding along roadside and park entrances .</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-2.jpg') }}" alt="Existing Condition 2" class="gallery-image">
-                            <p>Flooding along roadside and park entrances .</p>
-                        </div>
-                        <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-3.jpg') }}" alt="Existing Condition 3" class="gallery-image">
-                            <p>Flooding along roadside and park entrances .</p>
+                <div class="gallery-track">
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <img src="{{ asset('images/gallery/g-1.jpg') }}" alt="Stormwater Management" class="gallery-image">
+                            <div class="gallery-content">
+                                <p>Innovative drainage pathways directing stormwater away from buildings</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="gallery-slide">
-                    <div class="gallery-slide-items">
-                        <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 4" class="gallery-image">
-                            <p>Flooding along roadside and park entrances .</p>
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <img src="{{ asset('images/gallery/g-2.jpg') }}" alt="Green Infrastructure" class="gallery-image">
+                            <div class="gallery-content">
+                                <p>Community garden plots designed for water absorption and food production</p>
+                            </div>
                         </div>
-                        <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 5" class="gallery-image">
-                            <p>Flooding along roadside and park entrances .</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <img src="{{ asset('images/gallery/g-3.jpg') }}" alt="Waste Management" class="gallery-image">
+                            <div class="gallery-content">
+                                <p>Sustainable waste management infrastructure with water capture elements</p>
+                            </div>
                         </div>
-                        <div class="gallery-item">
-                            <img src="{{ secure_asset('images/gallery/g-1.jpg') }}" alt="Existing Condition 6" class="gallery-image">
-                            <p>Flooding along roadside and park entrances .</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <img src="{{ asset('images/gallery/g-4.jpg') }}" alt="Recreation Areas" class="gallery-image">
+                            <div class="gallery-content">
+                                <p>Basketball court with permeable surfaces to reduce runoff</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <img src="{{ asset('images/gallery/g-5.jpg') }}" alt="Drainage Systems" class="gallery-image">
+                            <div class="gallery-content">
+                                <p>Retrofitted drainage system with decorative blue elements</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <img src="{{ asset('images/gallery/g-6.jpg') }}" alt="Public Spaces" class="gallery-image">
+                            <div class="gallery-content">
+                                <p>Public seating area with integrated water management features</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <img src="{{ asset('images/gallery/g-7.jpg') }}" alt="Building Integration" class="gallery-image">
+                            <div class="gallery-content">
+                                <p>Stormwater capture basin integrated into building entrance pathway</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <img src="{{ asset('images/gallery/g-8.jpg') }}" alt="Urban Drainage" class="gallery-image">
+                            <div class="gallery-content">
+                                <p>Urban drainage channel designed to handle overflow during severe storms</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-card">
+                            <img src="{{ asset('images/gallery/g-1.jpg') }}" alt="Pedestrian Infrastructure" class="gallery-image">
+                            <div class="gallery-content">
+                                <p>Blue infrastructure solutions integrated with pedestrian pathways</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
         </div>
-        <div class="gallery-indicators">
-                <span class="indicator active"></span>
-                <span class="indicator"></span>
+        
+        <div class="gallery-navigation">
+            <button class="gallery-control prev" aria-label="Previous slide">&#8249;</button>
+            <div class="gallery-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+                <span class="indicator" data-slide="3"></span>
+                <span class="indicator" data-slide="4"></span>
+                <span class="indicator" data-slide="5"></span>
+                <span class="indicator" data-slide="6"></span>
             </div>
-            
-            <div class="gallery-controls">
-                <button class="gallery-control prev">&#8249;</button>
-                <button class="gallery-control next">&#8250;</button>
-            </div>
+            <button class="gallery-control next" aria-label="Next slide">&#8250;</button>
+        </div>
     </div>
 </section>
 
@@ -121,7 +145,7 @@
             <div class="cloudburst-cards">
                 <div class="cloudburst-card absorb">
                     <div class="card-icon">
-                        <img src="{{ secure_asset('images/icons/1.png') }}" alt="Absorb">
+                        <img src="{{ asset('images/icons/1.png') }}" alt="Absorb">
                     </div>
                     <h3>Capture and infiltrate first 1.25" of runoff</h3>
                     <p>Our first defense focuses on detaining water in permeable surfaces, rain gardens, and bioswales that naturally absorb water.</p>
@@ -129,7 +153,7 @@
                 
                 <div class="cloudburst-card store">
                     <div class="card-icon">
-                        <img src="{{ secure_asset('images/icons/2.png') }}" alt="Store">
+                        <img src="{{ asset('images/icons/2.png') }}" alt="Store">
                     </div>
                     <h3>Employ subsurface options once surface storage is fully saturated</h3>
                     <p>When surface systems reach capacity, we engage subsurface storage solutions including underground detention tanks and reservoirs.</p>
@@ -137,7 +161,7 @@
                 
                 <div class="cloudburst-card transfer">
                     <div class="card-icon">
-                        <img src="{{ secure_asset('images/icons/3.png') }}" alt="Transfer">
+                        <img src="{{ asset('images/icons/3.png') }}" alt="Transfer">
                     </div>
                     <h3>Storage is full and volumes must be directed offsite</h3>
                     <p>During extreme events when storage capacity is exhausted, we implement controlled water pathways that direct excess water away from critical infrastructure and residential areas.</p>
@@ -145,7 +169,7 @@
                 
                 <div class="cloudburst-card convey">
                     <div class="card-icon">
-                        <img src="{{ secure_asset('images/icons/4.png') }}" alt="Convey">
+                        <img src="{{ asset('images/icons/4.png') }}" alt="Convey">
                     </div>
                     <h3>Leverage secondary floodable spaces and strategic infrastructural improvements</h3>
                     <p>Our final tier utilizes designated secondary spaces that can temporarily handle excess water.</p>
@@ -154,21 +178,12 @@
         </div>
         
         <div class="cloudburst-diagram">
-            <img src="{{ secure_asset('images/diagram.png') }}" alt="Cloudburst Management Diagram">
+            <img src="{{ asset('images/diagram.png') }}" alt="Cloudburst Management Diagram">
         </div>
     </div>
 </section>
 
-<!-- Feedback Section -->
-<section class="feedback-section">
-    <div class="container">
-        <div class="feedback-content">
-            <h2>Help us prevent floods with your feedback</h2>
-            <p>The Cloudburst Management approach prioritizes resilience by addressing vulnerabilities and managing storm volumes hierarchically through the ABSORB, STORE, CONVEY, and TRANSFER framework for Cloudburst Storm Events today and in future climate conditions.</p>
-            <a href="#" class="btn-survey">Take a Survey</a>
-        </div>
-    </div>
-</section>
+
 
 <!-- Video Modal -->
 <div class="video-modal" id="videoModal">
