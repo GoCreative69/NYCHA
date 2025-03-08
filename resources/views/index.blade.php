@@ -35,78 +35,16 @@
         <div class="gallery-slider-container">
             <div class="gallery-slider">
                 <div class="gallery-track">
+                    @foreach(App\Models\GalleryItem::active()->ordered()->get() as $item)
                     <div class="gallery-item">
                         <div class="gallery-card">
-                            <img src="{{ asset('images/gallery/g-1.jpg') }}" alt="Stormwater Management" class="gallery-image">
+                            <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->title }}" class="gallery-image">
                             <div class="gallery-content">
-                                <p>Innovative drainage pathways directing stormwater away from buildings</p>
+                                <p>{{ $item->description }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="gallery-item">
-                        <div class="gallery-card">
-                            <img src="{{ asset('images/gallery/g-2.jpg') }}" alt="Green Infrastructure" class="gallery-image">
-                            <div class="gallery-content">
-                                <p>Community garden plots designed for water absorption and food production</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-card">
-                            <img src="{{ asset('images/gallery/g-3.jpg') }}" alt="Waste Management" class="gallery-image">
-                            <div class="gallery-content">
-                                <p>Sustainable waste management infrastructure with water capture elements</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-card">
-                            <img src="{{ asset('images/gallery/g-4.jpg') }}" alt="Recreation Areas" class="gallery-image">
-                            <div class="gallery-content">
-                                <p>Basketball court with permeable surfaces to reduce runoff</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-card">
-                            <img src="{{ asset('images/gallery/g-5.jpg') }}" alt="Drainage Systems" class="gallery-image">
-                            <div class="gallery-content">
-                                <p>Retrofitted drainage system with decorative blue elements</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-card">
-                            <img src="{{ asset('images/gallery/g-6.jpg') }}" alt="Public Spaces" class="gallery-image">
-                            <div class="gallery-content">
-                                <p>Public seating area with integrated water management features</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-card">
-                            <img src="{{ asset('images/gallery/g-7.jpg') }}" alt="Building Integration" class="gallery-image">
-                            <div class="gallery-content">
-                                <p>Stormwater capture basin integrated into building entrance pathway</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-card">
-                            <img src="{{ asset('images/gallery/g-8.jpg') }}" alt="Urban Drainage" class="gallery-image">
-                            <div class="gallery-content">
-                                <p>Urban drainage channel designed to handle overflow during severe storms</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-card">
-                            <img src="{{ asset('images/gallery/g-1.jpg') }}" alt="Pedestrian Infrastructure" class="gallery-image">
-                            <div class="gallery-content">
-                                <p>Blue infrastructure solutions integrated with pedestrian pathways</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -114,15 +52,16 @@
         <div class="gallery-navigation">
             <button class="gallery-control prev" aria-label="Previous slide">&#8249;</button>
             <div class="gallery-indicators">
-                <span class="indicator active" data-slide="0"></span>
-                <span class="indicator" data-slide="1"></span>
-                <span class="indicator" data-slide="2"></span>
-                <span class="indicator" data-slide="3"></span>
-                <span class="indicator" data-slide="4"></span>
-                <span class="indicator" data-slide="5"></span>
-                <span class="indicator" data-slide="6"></span>
+                @php $galleryCount = App\Models\GalleryItem::active()->count(); @endphp
+                @for($i = 0; $i < ceil($galleryCount / 3); $i++)
+                    <span class="indicator {{ $i === 0 ? 'active' : '' }}" data-slide="{{ $i }}"></span>
+                @endfor
             </div>
             <button class="gallery-control next" aria-label="Next slide">&#8250;</button>
+        </div>
+        
+        <div class="section-button">
+            <a href="{{ route('gallery') }}" class="hero-btn">View Full Gallery</a>
         </div>
     </div>
 </section>

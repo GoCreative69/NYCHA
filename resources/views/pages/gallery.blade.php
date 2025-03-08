@@ -19,68 +19,52 @@
 <section class="photo-gallery">
     <div class="container">
         <div class="gallery-container">
+            @php
+                $itemCount = count($galleryItems);
+                $itemsInFirstCol = ceil($itemCount / 3);
+                $itemsInSecondCol = ceil(($itemCount - $itemsInFirstCol) / 2);
+                $itemsInThirdCol = $itemCount - $itemsInFirstCol - $itemsInSecondCol;
+                
+                $firstColItems = $galleryItems->take($itemsInFirstCol);
+                $secondColItems = $galleryItems->slice($itemsInFirstCol, $itemsInSecondCol);
+                $thirdColItems = $galleryItems->slice($itemsInFirstCol + $itemsInSecondCol);
+            @endphp
+            
             <div class="gallery-col">
-                <div class="gallery-img large">
-                    <img src="{{ asset('images/gallery/g-1.jpg') }}" alt="Stormwater management pathway">
-                    <div class="img-caption">Innovative drainage pathways directing stormwater away from buildings</div>
-                </div>
-                <div class="gallery-img">
-                    <img src="{{ asset('images/gallery/g-5.jpg') }}" alt="Waste management with water capture">
-                    <div class="img-caption">Retrofitted drainage system with decorative blue elements</div>
-                </div>
-                <div class="gallery-img">
-                    <img src="{{ asset('images/gallery/g-8.jpg') }}" alt="Urban drainage channel">
-                    <div class="img-caption">Urban drainage channel designed to handle overflow during severe storms</div>
-                </div>
-             
+                @foreach($firstColItems as $index => $item)
+                    <div class="gallery-img {{ $index === 0 ? 'large' : '' }}">
+                        <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->title }}">
+                        <div class="img-caption">{{ $item->description }}</div>
+                    </div>
+                @endforeach
             </div>
+            
             <div class="gallery-col">
-                <div class="gallery-img">
-                    <img src="{{ asset('images/gallery/g-2.jpg') }}" alt="Community garden plots">
-                    <div class="img-caption">Community garden plots designed for water absorption and food production</div>
-                </div>
-                <div class="gallery-img">
-                    <img src="{{ asset('images/gallery/g-3.jpg') }}" alt="Waste management infrastructure">
-                    <div class="img-caption">Sustainable waste management infrastructure with water capture elements</div>
-                </div>
-                <div class="gallery-img">
-                    <img src="{{ asset('images/gallery/g-4.jpg') }}" alt="Basketball court with permeable surfaces">
-                    <div class="img-caption">Basketball court with permeable surfaces to reduce runoff</div>
-                </div>
-                <div class="gallery-img">
-                    <img src="{{ asset('images/gallery/g-6.jpg') }}" alt="Public seating area">
-                    <div class="img-caption">Public seating area with integrated water management features</div>
-                </div>
+                @foreach($secondColItems as $item)
+                    <div class="gallery-img">
+                        <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->title }}">
+                        <div class="img-caption">{{ $item->description }}</div>
+                    </div>
+                @endforeach
             </div>
+            
             <div class="gallery-col">
-                <div class="gallery-img">
-                    <img src="{{ asset('images/gallery/g-7.jpg') }}" alt="Stormwater capture basin">
-                    <div class="img-caption">Stormwater capture basin integrated into building entrance pathway</div>
-                </div>
-                <div class="gallery-img large">
-                    <img src="{{ asset('images/gallery/g-5.jpg') }}" alt="Green infrastructure integration">
-                    <div class="img-caption">Integrated green infrastructure creating pleasant recreational spaces</div>
-                </div>
-                <div class="gallery-img">
-                    <img src="{{ asset('images/gallery/g-7.jpg') }}" alt="Urban drainage channel">
-                    <div class="img-caption">Urban drainage channel designed to handle overflow during severe storms</div>
-                </div>
+                @foreach($thirdColItems as $item)
+                    <div class="gallery-img">
+                        <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->title }}">
+                        <div class="img-caption">{{ $item->description }}</div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
 </section>
 
-<!-- Lightbox for Gallery Images -->
-<div class="lightbox" id="imageLightbox">
-    <div class="lightbox-content">
-        <span class="close-lightbox">&times;</span>
-        <img id="lightboxImage" src="" alt="Enlarged Image">
-        <div class="lightbox-caption" id="lightboxCaption"></div>
-        <div class="lightbox-nav">
-            <button id="prevImage">&lsaquo;</button>
-            <button id="nextImage">&rsaquo;</button>
-        </div>
-    </div>
+<!-- Image Lightbox -->
+<div id="imageLightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img class="lightbox-image" alt="Enlarged gallery image">
+    <div class="lightbox-caption"></div>
 </div>
 @endsection
 
@@ -90,73 +74,41 @@
         // Gallery lightbox functionality
         const galleryImages = document.querySelectorAll('.gallery-img img');
         const lightbox = document.getElementById('imageLightbox');
-        const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxCaption = document.getElementById('lightboxCaption');
-        const closeLightbox = document.querySelector('.close-lightbox');
-        const prevButton = document.getElementById('prevImage');
-        const nextButton = document.getElementById('nextImage');
+        const lightboxImage = lightbox.querySelector('.lightbox-image');
+        const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+        const closeLightbox = lightbox.querySelector('.close-lightbox');
         
-        let currentImageIndex = 0;
-        const imagesArray = [];
-        
-        // Populate images array
-        galleryImages.forEach((img, index) => {
-            const caption = img.nextElementSibling ? img.nextElementSibling.textContent : '';
-            imagesArray.push({
-                src: img.src,
-                caption: caption,
-                index: index
-            });
-            
-            // Add click event to open lightbox
+        // Open lightbox when clicking on an image
+        galleryImages.forEach(function(img) {
             img.addEventListener('click', function() {
-                currentImageIndex = index;
-                openLightbox(currentImageIndex);
+                lightboxImage.src = this.src;
+                lightboxImage.alt = this.alt;
+                lightboxCaption.textContent = this.nextElementSibling.textContent;
+                lightbox.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
             });
         });
         
-        function openLightbox(index) {
-            lightboxImage.src = imagesArray[index].src;
-            lightboxCaption.textContent = imagesArray[index].caption;
-            lightbox.classList.add('active');
-        }
-        
-        // Close lightbox
+        // Close lightbox when clicking on close button or anywhere outside the image
         closeLightbox.addEventListener('click', function() {
-            lightbox.classList.remove('active');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
         
-        // Close when clicking outside the image
         lightbox.addEventListener('click', function(e) {
             if (e.target === lightbox) {
-                lightbox.classList.remove('active');
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         });
         
-        // Previous image
-        prevButton.addEventListener('click', function() {
-            currentImageIndex = (currentImageIndex - 1 + imagesArray.length) % imagesArray.length;
-            openLightbox(currentImageIndex);
-        });
-        
-        // Next image
-        nextButton.addEventListener('click', function() {
-            currentImageIndex = (currentImageIndex + 1) % imagesArray.length;
-            openLightbox(currentImageIndex);
-        });
-        
-        // Keyboard navigation
+        // Handle keyboard navigation
         document.addEventListener('keydown', function(e) {
-            if (!lightbox.classList.contains('active')) return;
-            
-            if (e.key === 'ArrowLeft') {
-                currentImageIndex = (currentImageIndex - 1 + imagesArray.length) % imagesArray.length;
-                openLightbox(currentImageIndex);
-            } else if (e.key === 'ArrowRight') {
-                currentImageIndex = (currentImageIndex + 1) % imagesArray.length;
-                openLightbox(currentImageIndex);
-            } else if (e.key === 'Escape') {
-                lightbox.classList.remove('active');
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'Escape') {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
             }
         });
     });

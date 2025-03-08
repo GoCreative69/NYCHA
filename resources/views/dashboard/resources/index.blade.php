@@ -7,11 +7,17 @@
         <div class="section-header">
             <h2 class="section-title">Resources Management</h2>
             <div class="section-actions">
-                <a href="{{ asset('/dashboard/resources/create') }}" class="action-btn">
+                <a href="{{ route('dashboard.resources.create') }}" class="action-btn">
                     <i class="fas fa-plus"></i> Add New Resource
                 </a>
             </div>
         </div>
+        
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         
         <!-- Filter Options -->
         <div class="filter-container">
@@ -49,25 +55,30 @@
                     <th>Title</th>
                     <th>Category</th>
                     <th>Type</th>
-                    <th>Date Added</th>
                     <th>Downloads</th>
+                    <th>Last Updated</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
+                <!-- Placeholder resource items -->
                 <tr data-id="1">
                     <td>Cloudburst Design Guidelines</td>
                     <td>Technical</td>
                     <td>PDF Document</td>
-                    <td>Feb 15, 2025</td>
-                    <td>245</td>
-                    <td><span class="status-badge active">Published</span></td>
+                    <td>128</td>
+                    <td>Feb 25, 2025</td>
+                    <td><span class="status-badge active">Active</span></td>
                     <td>
                         <div class="row-actions">
-                            <button data-action="view" class="view"><i class="fas fa-eye"></i></button>
-                            <button data-action="edit" class="edit"><i class="fas fa-edit"></i></button>
-                            <button data-action="delete" class="delete"><i class="fas fa-trash"></i></button>
+                            <a href="{{ route('dashboard.resources.show', 1) }}" class="view"><i class="fas fa-eye"></i></a>
+                            <a href="{{ route('dashboard.resources.edit', 1) }}" class="edit"><i class="fas fa-edit"></i></a>
+                            <form action="{{ route('dashboard.resources.destroy', 1) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete"><i class="fas fa-trash"></i></button>
+                            </form>
                         </div>
                     </td>
                 </tr>
@@ -75,74 +86,37 @@
                     <td>Community Engagement Plan</td>
                     <td>Community</td>
                     <td>PDF Document</td>
-                    <td>Feb 20, 2025</td>
-                    <td>178</td>
-                    <td><span class="status-badge active">Published</span></td>
+                    <td>87</td>
+                    <td>Feb 18, 2025</td>
+                    <td><span class="status-badge active">Active</span></td>
                     <td>
                         <div class="row-actions">
-                            <button data-action="view" class="view"><i class="fas fa-eye"></i></button>
-                            <button data-action="edit" class="edit"><i class="fas fa-edit"></i></button>
-                            <button data-action="delete" class="delete"><i class="fas fa-trash"></i></button>
+                            <a href="{{ route('dashboard.resources.show', 2) }}" class="view"><i class="fas fa-eye"></i></a>
+                            <a href="{{ route('dashboard.resources.edit', 2) }}" class="edit"><i class="fas fa-edit"></i></a>
+                            <form action="{{ route('dashboard.resources.destroy', 2) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete"><i class="fas fa-trash"></i></button>
+                            </form>
                         </div>
                     </td>
                 </tr>
                 <tr data-id="3">
-                    <td>Breukelen Houses Stormwater Analysis</td>
-                    <td>Technical</td>
-                    <td>PDF Document</td>
-                    <td>Mar 01, 2025</td>
-                    <td>132</td>
-                    <td><span class="status-badge active">Published</span></td>
-                    <td>
-                        <div class="row-actions">
-                            <button data-action="view" class="view"><i class="fas fa-eye"></i></button>
-                            <button data-action="edit" class="edit"><i class="fas fa-edit"></i></button>
-                            <button data-action="delete" class="delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-id="4">
-                    <td>Project Introduction Video</td>
+                    <td>Stormwater Management Best Practices</td>
                     <td>Educational</td>
                     <td>Video Content</td>
-                    <td>Mar 05, 2025</td>
-                    <td>320</td>
-                    <td><span class="status-badge active">Published</span></td>
+                    <td>213</td>
+                    <td>Feb 10, 2025</td>
+                    <td><span class="status-badge active">Active</span></td>
                     <td>
                         <div class="row-actions">
-                            <button data-action="view" class="view"><i class="fas fa-eye"></i></button>
-                            <button data-action="edit" class="edit"><i class="fas fa-edit"></i></button>
-                            <button data-action="delete" class="delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-id="5">
-                    <td>Stakeholder Presentation</td>
-                    <td>Project</td>
-                    <td>Presentation</td>
-                    <td>Mar 08, 2025</td>
-                    <td>95</td>
-                    <td><span class="status-badge active">Published</span></td>
-                    <td>
-                        <div class="row-actions">
-                            <button data-action="view" class="view"><i class="fas fa-eye"></i></button>
-                            <button data-action="edit" class="edit"><i class="fas fa-edit"></i></button>
-                            <button data-action="delete" class="delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-id="6">
-                    <td>Construction Schedule</td>
-                    <td>Project</td>
-                    <td>PDF Document</td>
-                    <td>Mar 10, 2025</td>
-                    <td>0</td>
-                    <td><span class="status-badge pending">Draft</span></td>
-                    <td>
-                        <div class="row-actions">
-                            <button data-action="view" class="view"><i class="fas fa-eye"></i></button>
-                            <button data-action="edit" class="edit"><i class="fas fa-edit"></i></button>
-                            <button data-action="delete" class="delete"><i class="fas fa-trash"></i></button>
+                            <a href="{{ route('dashboard.resources.show', 3) }}" class="view"><i class="fas fa-eye"></i></a>
+                            <a href="{{ route('dashboard.resources.edit', 3) }}" class="edit"><i class="fas fa-edit"></i></a>
+                            <form action="{{ route('dashboard.resources.destroy', 3) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete"><i class="fas fa-trash"></i></button>
+                            </form>
                         </div>
                     </td>
                 </tr>

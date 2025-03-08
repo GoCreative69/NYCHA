@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\Dashboard\GalleryController as DashboardGalleryController;
+use App\Http\Controllers\Dashboard\ResourcesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,27 +28,24 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Public Routes
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/community', function () {
     return view('pages.community');
 });
 
-Route::get('/gallery', function () {
-    return view('pages.gallery');
-});
-
 Route::get('/resources', function () {
     return view('pages.resources');
 });
 
+// Frontend - Gallery Routes
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+
 // Dashboard Routes - Protected by Auth Middleware
 Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function () {
     // Main Dashboard
-    Route::get('/', function () {
-        return view('dashboard.index');
-    })->name('index');
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
     
     // Events Management
     Route::get('/events', function () {
@@ -53,15 +55,19 @@ Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(functi
         return view('dashboard.events.create');
     })->name('events.create');
     
-    // Gallery Management
-    Route::get('/gallery', function () {
-        return view('dashboard.gallery.index');
-    })->name('gallery.index');
+    // News Routes
+    Route::resource('news', NewsController::class);
+    Route::patch('/news/{news}/status', [NewsController::class, 'updateStatus'])->name('news.update.status');
+    Route::post('/news/bulk-action', [NewsController::class, 'bulkAction'])->name('news.bulk.action');
     
-    // Resources Management
-    Route::get('/resources', function () {
-        return view('dashboard.resources.index');
-    })->name('resources.index');
+    // Gallery Management Routes
+    Route::resource('gallery', DashboardGalleryController::class);
+    Route::patch('/gallery/{gallery}/status', [DashboardGalleryController::class, 'toggleStatus'])->name('gallery.toggle.status');
+    Route::post('/gallery/order', [DashboardGalleryController::class, 'updateOrder'])->name('gallery.update.order');
+    
+    // Resources Management Routes
+    Route::resource('resources', ResourcesController::class);
+    Route::patch('/resources/{resource}/status', [ResourcesController::class, 'toggleStatus'])->name('resources.toggle.status');
     
     // Users Management
     Route::get('/users', [UserController::class, 'index'])->name('users.index');

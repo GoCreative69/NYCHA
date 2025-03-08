@@ -3,178 +3,107 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <!-- Dashboard Overview -->
-    <div class="dashboard-metrics">
-        <div class="metric-card">
-            <div class="metric-icon">
-                <i class="fas fa-calendar-alt"></i>
-            </div>
-            <h3 class="metric-title">Total Events ggg</h3>
-            <p class="metric-value">24</p>
-            <div class="metric-change">
-                <i class="fas fa-arrow-up"></i> 12% from last month
-            </div>
-        </div>
-        
-        <div class="metric-card">
-            <div class="metric-icon">
-                <i class="fas fa-images"></i>
-            </div>
-            <h3 class="metric-title">Gallery Images</h3>
-            <p class="metric-value">156</p>
-            <div class="metric-change">
-                <i class="fas fa-arrow-up"></i> 8% from last month
-            </div>
-        </div>
-        
-        <div class="metric-card">
-            <div class="metric-icon">
-                <i class="fas fa-file-alt"></i>
-            </div>
-            <h3 class="metric-title">Resources</h3>
-            <p class="metric-value">38</p>
-            <div class="metric-change">
-                <i class="fas fa-arrow-up"></i> 5% from last month
-            </div>
-        </div>
-        
-        <div class="metric-card">
-            <div class="metric-icon">
-                <i class="fas fa-users"></i>
-            </div>
-            <h3 class="metric-title">Registered Users</h3>
-            <p class="metric-value">1,245</p>
-            <div class="metric-change">
-                <i class="fas fa-arrow-up"></i> 15% from last month
-            </div>
-        </div>
+<div class="dashboard-section">
+    <div class="section-header">
+        <h2 class="section-title">Dashboard</h2>
     </div>
     
-    <!-- Recent Events -->
-    <div class="dashboard-section">
-        <div class="section-header">
-            <h2 class="section-title">Recent Events</h2>
-            <div class="section-actions">
-                <a href="{{ asset('/dashboard/events/create') }}" class="action-btn">
-                    <i class="fas fa-plus"></i> Add New Event
+    <div class="dashboard-content">
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="stat-details">
+                    <h3 class="stat-value">{{ $galleryCount }}</h3>
+                    <p class="stat-label">Gallery Items</p>
+                </div>
+                <a href="{{ route('dashboard.gallery.index') }}" class="stat-link">
+                    <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
-        </div>
-        
-        <table class="dashboard-table">
-            <thead>
-                <tr>
-                    <th>Event Name</th>
-                    <th>Date</th>
-                    <th>Location</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-id="1">
-                    <td>Community Planning Workshop</td>
-                    <td>March 15, 2025</td>
-                    <td>Breukelen Community Center</td>
-                    <td><span class="status-badge active">Active</span></td>
-                    <td>
-                        <div class="row-actions">
-                            <button data-action="view" class="view"><i class="fas fa-eye"></i></button>
-                            <button data-action="edit" class="edit"><i class="fas fa-edit"></i></button>
-                            <button data-action="delete" class="delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-id="2">
-                    <td>Design Review Meeting</td>
-                    <td>March 20, 2025</td>
-                    <td>Virtual (Zoom)</td>
-                    <td><span class="status-badge active">Active</span></td>
-                    <td>
-                        <div class="row-actions">
-                            <button data-action="view" class="view"><i class="fas fa-eye"></i></button>
-                            <button data-action="edit" class="edit"><i class="fas fa-edit"></i></button>
-                            <button data-action="delete" class="delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                <tr data-id="3">
-                    <td>Community Feedback Session</td>
-                    <td>April 5, 2025</td>
-                    <td>Breukelen Houses Courtyard</td>
-                    <td><span class="status-badge pending">Pending</span></td>
-                    <td>
-                        <div class="row-actions">
-                            <button data-action="view" class="view"><i class="fas fa-eye"></i></button>
-                            <button data-action="edit" class="edit"><i class="fas fa-edit"></i></button>
-                            <button data-action="delete" class="delete"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <div class="section-footer">
-            <a href="{{ asset('/dashboard/events') }}" class="view-all-link">View All Events <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </div>
-    
-    <!-- Recent Gallery Uploads -->
-    <div class="dashboard-section">
-        <div class="section-header">
-            <h2 class="section-title">Recent Gallery Uploads</h2>
-            <div class="section-actions">
-                <a href="{{ asset('/dashboard/gallery/create') }}" class="action-btn">
-                    <i class="fas fa-plus"></i> Upload Images
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="stat-details">
+                    <h3 class="stat-value">0</h3>
+                    <p class="stat-label">Resources</p>
+                </div>
+                <a href="{{ route('dashboard.resources.index') }}" class="stat-link">
+                    <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
+            
+            <!-- Additional stat cards can be added here as more features are implemented -->
         </div>
         
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="{{ asset('images/gallery/cloudburst-1.jpg') }}" alt="Gallery Image" class="gallery-img">
-                <div class="gallery-overlay">
-                    <div class="gallery-actions">
-                        <button class="gallery-view"><i class="fas fa-eye"></i></button>
-                        <button class="gallery-edit"><i class="fas fa-edit"></i></button>
-                        <button class="gallery-delete"><i class="fas fa-trash"></i></button>
+        <div class="dashboard-cards">
+            <div class="dashboard-row">
+                <div class="dashboard-col">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-image"></i> Gallery Management
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Manage the gallery items displayed on the website. Upload new images, edit descriptions, and control which images appear in the featured slider.</p>
+                            <div class="card-actions">
+                                <a href="{{ route('dashboard.gallery.index') }}" class="action-btn">
+                                    <i class="fas fa-list"></i> View All Items
+                                </a>
+                                <a href="{{ route('dashboard.gallery.create') }}" class="action-btn">
+                                    <i class="fas fa-plus"></i> Add New Item
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-col">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-file-alt"></i> Resources Management
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Manage downloadable resources and documents for the website. Upload new files, organize by categories, and control visibility.</p>
+                            <div class="card-actions">
+                                <a href="{{ route('dashboard.resources.index') }}" class="action-btn">
+                                    <i class="fas fa-list"></i> View All Resources
+                                </a>
+                                <a href="{{ route('dashboard.resources.create') }}" class="action-btn">
+                                    <i class="fas fa-plus"></i> Add New Resource
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="{{ asset('images/gallery/cloudburst-2.jpg') }}" alt="Gallery Image" class="gallery-img">
-                <div class="gallery-overlay">
-                    <div class="gallery-actions">
-                        <button class="gallery-view"><i class="fas fa-eye"></i></button>
-                        <button class="gallery-edit"><i class="fas fa-edit"></i></button>
-                        <button class="gallery-delete"><i class="fas fa-trash"></i></button>
+            
+            <div class="dashboard-row">
+                <div class="dashboard-col">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-user"></i> Your Profile
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Update your profile information, change your password, and manage your account settings.</p>
+                            <div class="card-actions">
+                                <a href="{{ route('dashboard.profile.show') }}" class="action-btn">
+                                    <i class="fas fa-user-edit"></i> Edit Profile
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="gallery-item">
-                <img src="{{ asset('images/gallery/cloudburst-3.jpg') }}" alt="Gallery Image" class="gallery-img">
-                <div class="gallery-overlay">
-                    <div class="gallery-actions">
-                        <button class="gallery-view"><i class="fas fa-eye"></i></button>
-                        <button class="gallery-edit"><i class="fas fa-edit"></i></button>
-                        <button class="gallery-delete"><i class="fas fa-trash"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="{{ asset('images/gallery/cloudburst-4.jpg') }}" alt="Gallery Image" class="gallery-img">
-                <div class="gallery-overlay">
-                    <div class="gallery-actions">
-                        <button class="gallery-view"><i class="fas fa-eye"></i></button>
-                        <button class="gallery-edit"><i class="fas fa-edit"></i></button>
-                        <button class="gallery-delete"><i class="fas fa-trash"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section-footer">
-            <a href="{{ asset('/dashboard/gallery') }}" class="view-all-link">View All Images <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
+</div>
 @endsection
