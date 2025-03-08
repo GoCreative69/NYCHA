@@ -17,10 +17,10 @@
                     <img src="{{ asset('images/logo.png') }}" alt="NYCHA Logo">
                 </div>
                 <div class="footer-nav">
-                    <a href="#">Home</a>
-                    <a href="#">Community</a>
-                    <a href="#">Gallery</a>
-                    <a href="#">Resources</a>
+                    <a href="{{ asset('/') }}">Home</a>
+                    <a href="{{ asset('/community') }}">Community</a>
+                    <a href="{{ asset('/gallery') }}">Gallery</a>
+                    <a href="{{ asset('/resources') }}">Resources</a>
                 </div>
             </div>
             
