@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'status',
+        'last_login_at',
+        'avatar',
     ];
 
     /**
@@ -41,5 +45,36 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'last_login_at' => 'datetime',
     ];
+    
+    /**
+     * Check if the user is an admin.
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+    
+    /**
+     * Check if the user is an editor.
+     *
+     * @return bool
+     */
+    public function isEditor()
+    {
+        return $this->role === 'editor' || $this->isAdmin();
+    }
+    
+    /**
+     * Check if the user is active.
+     *
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->status === 'active';
+    }
 }
