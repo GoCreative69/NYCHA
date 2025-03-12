@@ -86,7 +86,7 @@
 </section>
 
 <!-- FAQs Section -->
-<section class="faqs-section">
+<section class="faqs-section" style="background-color: #f9f9f9; padding: 60px 0;">
     <div class="container">
         <div class="faq-header">
             <h2>NYCHA FAQs:</h2>
@@ -95,114 +95,38 @@
         </div>
         
         <div class="faq-grid">
-            <!-- FAQ Item 1 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>How long will this project take?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>The Breukelen Houses cloudburst management project is scheduled to be completed over a 24-month period. Construction will be phased to minimize disruption to residents.</p>
-                </div>
+            <div class="faq-container">
+                <div class="faq-item">How long will this project take? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">The Breukelen Houses cloudburst management project is scheduled to be completed over a 24-month period. Construction will be phased to minimize disruption to residents.</div>
+                
+                <div class="faq-item">Will this project affect my apartment or utilities? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">The project is focused on outdoor spaces and infrastructure improvements. There should be minimal to no disruption to individual apartments or utility services during the construction process.</div>
+                
+                <div class="faq-item">Will these improvements also help with standing water and pests? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">Yes, the cloudburst management solutions are specifically designed to eliminate standing water issues, which will significantly reduce mosquito breeding areas and related pest problems.</div>
+                
+                <div class="faq-item">Will there be noise or road closures? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">Some construction noise is inevitable, but work will be limited to daytime hours. Temporary pathway detours may be necessary, but we'll ensure all buildings remain accessible throughout the project.</div>
+                
+                <div class="faq-item">How can I share my thoughts on the project? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">We welcome your input! You can share your thoughts at community meetings, through our online survey, or by contacting your resident association representative.</div>
             </div>
             
-            <!-- FAQ Item 2 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>Will this project affect my apartment or utilities?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>The project is focused on outdoor spaces and infrastructure improvements. There should be minimal to no disruption to individual apartments or utility services during the construction process.</p>
-                </div>
-            </div>
-            
-            <!-- FAQ Item 3 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>Will these improvements also help with standing water and pests?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes, the cloudburst management solutions are specifically designed to eliminate standing water issues, which will significantly reduce mosquito breeding areas and related pest problems.</p>
-                </div>
-            </div>
-            
-            <!-- FAQ Item 4 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>Will there be noise or road closures?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Some construction noise is inevitable, but work will be limited to daytime hours. Temporary pathway detours may be necessary, but we'll ensure all buildings remain accessible throughout the project.</p>
-                </div>
-            </div>
-            
-            <!-- FAQ Item 5 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>How can I share my thoughts on the project?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>We welcome your input! You can share your thoughts at community meetings, through our online survey, or by contacting your resident association representative.</p>
-                </div>
-            </div>
-            
-            <!-- FAQ Item 6 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>Will this project create jobs for Breukelen residents?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes, we're working with contractors to create local employment opportunities. Residents interested in project-related jobs should contact the NYCHA Resident Economic Empowerment & Sustainability office.</p>
-                </div>
-            </div>
-            
-            <!-- FAQ Item 7 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>Will residents have a say in what changes are made?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Absolutely. Community engagement is a cornerstone of this project. We've already incorporated resident feedback into the designs and will continue to consult with the community as the project progresses.</p>
-                </div>
-            </div>
-            
-            <!-- FAQ Item 8 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>Will there be construction at Breukelen Houses?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes, construction will take place throughout the Breukelen Houses campus, primarily focusing on outdoor areas to implement the cloudburst management features.</p>
-                </div>
-            </div>
-            
-            <!-- FAQ Item 9 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>How will I get updates about the project?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Updates will be provided through resident newsletters, community meetings, the NYCHA website, and direct communications to affected buildings prior to work in specific areas.</p>
-                </div>
-            </div>
-            
-            <!-- FAQ Item 10 -->
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h4>Who can I contact if I have concerns or questions?</h4>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>You can contact the Breukelen Houses Management Office or our dedicated community liaison for this project. Contact information is available on our website and in all project communications.</p>
-                </div>
+            <div class="faq-container">
+                <div class="faq-item">Will this project create jobs for Breukelen residents? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">Yes, we're working with contractors to create local employment opportunities. Residents interested in project-related jobs should contact the NYCHA Resident Economic Empowerment & Sustainability office.</div>
+                
+                <div class="faq-item">Will residents have a say in what changes are made? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">Absolutely. Community engagement is a cornerstone of this project. We've already incorporated resident feedback into the designs and will continue to consult with the community as the project progresses.</div>
+                
+                <div class="faq-item">Will there be construction at Breukelen Houses? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">Yes, construction will take place throughout the Breukelen Houses campus, primarily focusing on outdoor areas to implement the cloudburst management features.</div>
+                
+                <div class="faq-item">How will I get updates about the project? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">Updates will be provided through resident newsletters, community meetings, the NYCHA website, and direct communications to affected buildings prior to work in specific areas.</div>
+                
+                <div class="faq-item">Who can I contact if I have concerns or questions? <span class="faq-toggle">+</span></div>
+                <div class="faq-answer">You can contact the Breukelen Houses Management Office or our dedicated community liaison for this project. Contact information is available on our website and in all project communications.</div>
             </div>
         </div>
         
@@ -210,7 +134,30 @@
             <h3>Still Have Questions?</h3>
             <h4>We're Here to Help!</h4>
             <p>If you didn't find the answer you were looking for, reach out to us! Our team is ready to assist you with any additional inquiries.</p>
-            <a href="#" class="contact-btn">Contact</a>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName">Your Name</label>
+                            <input type="text" id="contactName" placeholder="Full Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" placeholder="example@email.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Subject</label>
+                        <input type="text" id="contactSubject" placeholder="Subject of your inquiry">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" rows="4" placeholder="How can we help you?"></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">Send Message</button>
+                </form>
+            </div>
         </div>
     </div>
 </section>
@@ -218,26 +165,39 @@
 
 @section('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // FAQ toggle functionality
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            const toggle = item.querySelector('.faq-toggle');
-            const answer = item.querySelector('.faq-answer');
-            
-            // Initially hide all answers
-            answer.style.display = 'none';
-            
-            question.addEventListener('click', function() {
-                // Toggle the answer visibility
-                if (answer.style.display === 'none') {
-                    answer.style.display = 'block';
-                    toggle.textContent = '−';
-                } else {
-                    answer.style.display = 'none';
-                    toggle.textContent = '+';
+    document.addEventListener("DOMContentLoaded", function() {
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+            item.addEventListener("click", function() {
+                // Close all answers first
+                faqItems.forEach(faq => {
+                    if (faq !== this) {
+                        faq.classList.remove("active");
+                        const nextAnswer = faq.nextElementSibling;
+                        if (nextAnswer && nextAnswer.classList.contains("faq-answer")) {
+                            nextAnswer.style.display = "none";
+                        }
+                        // Reset toggle icon to +
+                        const toggleIcon = faq.querySelector('.faq-toggle');
+                        if (toggleIcon) {
+                            toggleIcon.textContent = '+';
+                        }
+                    }
+                });
+
+                // Toggle current answer
+                this.classList.toggle("active");
+                const answer = this.nextElementSibling;
+                if (answer && answer.classList.contains("faq-answer")) {
+                    const isOpen = answer.style.display === "block";
+                    answer.style.display = isOpen ? "none" : "block";
+                    
+                    // Toggle the + - icon
+                    const toggleIcon = this.querySelector('.faq-toggle');
+                    if (toggleIcon) {
+                        toggleIcon.textContent = isOpen ? '+' : '−';
+                    }
                 }
             });
         });
