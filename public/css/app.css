@@ -2905,3 +2905,390 @@ h2 {
     background-color: #fff;
     border-radius: 0 0 4px 4px;
 }
+
+/* Pagination styling */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 5px;
+}
+
+.pagination li {
+    display: inline-block;
+}
+
+.pagination li .page-link,
+.pagination li span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 35px;
+    height: 35px;
+    padding: 0 10px;
+    border-radius: 4px;
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    transition: all 0.2s ease;
+}
+
+.pagination li.active .page-link,
+.pagination li.active span {
+    background-color: var(--nycha-red);
+    color: #fff;
+    border-color: var(--nycha-red);
+}
+
+.pagination li .page-link:hover {
+    background-color: #f5f5f5;
+}
+
+.pagination li.disabled span,
+.pagination li.disabled .page-link {
+    color: #ccc;
+    cursor: not-allowed;
+    background-color: #f9f9f9;
+}
+
+/* Fix for pagination SVG icons */
+.pagination svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Dashboard Pagination Styling */
+.dashboard-pagination {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    gap: 5px;
+}
+
+.pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pagination-btn.active {
+    background-color: var(--nycha-red);
+    color: #fff;
+    border-color: var(--nycha-red);
+}
+
+.pagination-btn:hover:not(.active):not(.disabled) {
+    background-color: #f5f5f5;
+}
+
+.pagination-btn.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+    background-color: #f9f9f9;
+}
+
+/* Fix for pagination icons */
+.pagination-btn i {
+    font-size: 14px;
+}
+
+/* Gallery Styling Fixes */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-item .gallery-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.gallery-actions {
+    display: flex;
+    gap: 8px;
+    z-index: 5;
+}
+
+.gallery-actions button,
+.gallery-actions a,
+.gallery-status button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.gallery-actions .gallery-view:hover { background-color: #e3f2fd; color: #2196f3; }
+.gallery-actions .gallery-edit:hover { background-color: #e8f5e9; color: #4caf50; }
+.gallery-actions .gallery-delete:hover { background-color: #ffebee; color: #f44336; }
+
+.gallery-details {
+    padding: 15px;
+    background-color: #fff;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.gallery-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.gallery-type {
+    font-size: 13px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.gallery-type.regular {
+    background-color: #e8f5e9;
+    color: #4caf50;
+}
+
+.gallery-type.featured {
+    background-color: #fff8e1;
+    color: #ffa000;
+}
+
+.gallery-date {
+    color: #757575;
+    font-size: 13px;
+}
+
+.gallery-status {
+    z-index: 5;
+}
+
+.status-toggle {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.status-toggle.active {
+    color: #4caf50;
+}
+
+.status-toggle.inactive {
+    color: #9e9e9e;
+}
+
+/* Filter Container Styling */
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+}
+
+.filter-group label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.filter-group .form-control {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.filter-group .action-btn {
+    margin-top: 24px;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #555;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-body img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.modal-body p {
+    margin-bottom: 20px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.preview-meta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.preview-type,
+.preview-status,
+.preview-date {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.preview-type.regular {
+    background-color: #e8f5e9;
+    color: #4caf50;
+}
+
+.preview-type.featured {
+    background-color: #fff8e1;
+    color: #ffa000;
+}
+
+.preview-status.active {
+    background-color: #e8f5e9;
+    color: #4caf50;
+}
+
+.preview-status.inactive {
+    background-color: #f5f5f5;
+    color: #9e9e9e;
+}
+
+.preview-date {
+    background-color: #f5f5f5;
+    color: #757575;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+    
+    .filter-container {
+        flex-direction: column;
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+}

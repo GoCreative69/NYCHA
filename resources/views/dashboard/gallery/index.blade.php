@@ -90,40 +90,44 @@
         </div>
         
         <!-- Pagination -->
-        <div class="pagination-container">
-            {{ $galleryItems->links() }}
+        <div class="dashboard-pagination">
+            @if($galleryItems->onFirstPage())
+                <button class="pagination-btn disabled"><i class="fas fa-chevron-left"></i></button>
+            @else
+                <a href="{{ $galleryItems->previousPageUrl() }}" class="pagination-btn"><i class="fas fa-chevron-left"></i></a>
+            @endif
+            
+            @for($i = 1; $i <= $galleryItems->lastPage(); $i++)
+                <a href="{{ $galleryItems->url($i) }}" class="pagination-btn {{ $galleryItems->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
+            @endfor
+            
+            @if($galleryItems->hasMorePages())
+                <a href="{{ $galleryItems->nextPageUrl() }}" class="pagination-btn"><i class="fas fa-chevron-right"></i></a>
+            @else
+                <button class="pagination-btn disabled"><i class="fas fa-chevron-right"></i></button>
+            @endif
         </div>
         
-        <!-- Bulk Actions -->
-        <div class="bulk-actions">
-            <select class="form-control bulk-action-select">
-                <option value="">Bulk Actions</option>
-                <option value="activate">Activate Selected</option>
-                <option value="deactivate">Deactivate Selected</option>
-                <option value="delete">Delete Selected</option>
-            </select>
-            <button class="action-btn apply-bulk-action">Apply</button>
-        </div>
-    </div>
-    
-    <!-- Gallery Item Preview Modal -->
-    <div class="modal" id="galleryPreviewModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h3 id="previewTitle"></h3>
-            </div>
-            <div class="modal-body">
-                <img id="previewImage" src="" alt="Gallery preview">
-                <p id="previewDescription"></p>
-                <div class="preview-meta">
-                    <div id="previewType" class="preview-type"></div>
-                    <div id="previewStatus" class="preview-status"></div>
-                    <div id="previewDate" class="preview-date"></div>
+        <!-- Gallery Item Preview Modal -->
+        <div class="modal" id="galleryPreviewModal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-header">
+                    <h3 id="previewTitle"></h3>
+                </div>
+                <div class="modal-body">
+                    <img id="previewImage" src="" alt="Gallery preview">
+                    <p id="previewDescription"></p>
+                    <div class="preview-meta">
+                        <div id="previewType" class="preview-type"></div>
+                        <div id="previewStatus" class="preview-status"></div>
+                        <div id="previewDate" class="preview-date"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
 @endsection
 
 @section('scripts')
@@ -173,33 +177,50 @@
             }
         });
         
-        // Bulk actions
-        const bulkActionSelect = document.querySelector('.bulk-action-select');
-        const applyBulkAction = document.querySelector('.apply-bulk-action');
-        const checkboxes = document.querySelectorAll('.gallery-select input[type="checkbox"]');
+        // Filter functionality
+        const typeFilter = document.getElementById('type-filter');
+        const statusFilter = document.getElementById('status-filter');
+        const applyFiltersBtn = document.getElementById('apply-filters');
+        const resetFiltersBtn = document.getElementById('reset-filters');
         
-        applyBulkAction.addEventListener('click', function() {
-            const action = bulkActionSelect.value;
-            if (!action) {
-                alert('Please select an action to perform');
-                return;
+        applyFiltersBtn.addEventListener('click', function() {
+            const typeValue = typeFilter.value;
+            const statusValue = statusFilter.value;
+            
+            // Create URL with filter parameters
+            let url = new URL(window.location.href);
+            if (typeValue !== 'all') {
+                url.searchParams.set('type', typeValue);
+            } else {
+                url.searchParams.delete('type');
             }
             
-            const selectedItems = document.querySelectorAll('.gallery-select input[type="checkbox"]:checked');
-            if (selectedItems.length === 0) {
-                alert('Please select at least one item');
-                return;
+            if (statusValue !== 'all') {
+                url.searchParams.set('status', statusValue);
+            } else {
+                url.searchParams.delete('status');
             }
             
-            const itemIds = Array.from(selectedItems).map(checkbox => checkbox.value);
-            
-            if (action === 'delete' && !confirm('Are you sure you want to delete the selected items? This action cannot be undone.')) {
-                return;
-            }
-            
-            // Submit the bulk action via AJAX or form
-            // Implementation depends on your backend handling
+            window.location.href = url.toString();
         });
+        
+        resetFiltersBtn.addEventListener('click', function() {
+            // Reset dropdowns to default
+            typeFilter.value = 'all';
+            statusFilter.value = 'all';
+            
+            // Remove all query parameters and reload
+            window.location.href = window.location.pathname;
+        });
+        
+        // Set filter values from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('type')) {
+            typeFilter.value = urlParams.get('type');
+        }
+        if (urlParams.has('status')) {
+            statusFilter.value = urlParams.get('status');
+        }
     });
 </script>
 @endsection
